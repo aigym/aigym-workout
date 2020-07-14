@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Data structures | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Data structures" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<link rel="canonical" href="https://aigym.github.io/aigym-workout/2020/07/14/Data-structures.html" />
+<meta property="og:url" content="https://aigym.github.io/aigym-workout/2020/07/14/Data-structures.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-14T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"An easy to use blogging platform with support for Jupyter Notebooks.","@type":"BlogPosting","headline":"Data structures","dateModified":"2020-07-14T00:00:00-05:00","datePublished":"2020-07-14T00:00:00-05:00","url":"https://aigym.github.io/aigym-workout/2020/07/14/Data-structures.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://aigym.github.io/aigym-workout/2020/07/14/Data-structures.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/aigym-workout/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://aigym.github.io/aigym-workout/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/aigym-workout/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Data structures | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Data structures" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<link rel="canonical" href="https://aigym.github.io/aigym-workout/2020/07/14/Data-structures.html" />
+<meta property="og:url" content="https://aigym.github.io/aigym-workout/2020/07/14/Data-structures.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-14T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"An easy to use blogging platform with support for Jupyter Notebooks.","@type":"BlogPosting","headline":"Data structures","dateModified":"2020-07-14T00:00:00-05:00","datePublished":"2020-07-14T00:00:00-05:00","url":"https://aigym.github.io/aigym-workout/2020/07/14/Data-structures.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://aigym.github.io/aigym-workout/2020/07/14/Data-structures.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://aigym.github.io/aigym-workout/feed.xml" title="fastpages" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/aigym-workout/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/aigym-workout/about/">About Me</a><a class="page-link" href="/aigym-workout/search/">Search</a><a class="page-link" href="/aigym-workout/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Data structures</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-07-14T00:00:00-05:00" itemprop="datePublished">
+        Jul 14, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      6 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/aigym/aigym-workout/tree/master/_notebooks/2020-07-14-Data-structures.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/aigym-workout/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/aigym/aigym-workout/master?filepath=_notebooks%2F2020-07-14-Data-structures.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/aigym-workout/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/aigym/aigym-workout/blob/master/_notebooks/2020-07-14-Data-structures.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/aigym-workout/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-07-14-Data-structures.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Tuples">Tuples<a class="anchor-link" href="#Tuples"> </a></h2><p>We can create a tuple by enclosing an ordered collection of elements in <code>( )</code>.</p>
+<p>Syntax: <br /></p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="n">item1</span><span class="p">,</span> <span class="n">item2</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myfavoriteanimals</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;penguins&quot;</span><span class="p">,</span> <span class="s2">&quot;cats&quot;</span><span class="p">,</span> <span class="s2">&quot;sugargliders&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(&#34;penguins&#34;, &#34;cats&#34;, &#34;sugargliders&#34;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can index into this tuple,</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myfavoriteanimals</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#34;penguins&#34;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>but since tuples are immutable, we can't update it</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myfavoriteanimals</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;otters&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+MethodError: no method matching setindex!(::Tuple{String,String,String}, ::String, ::Int64)
+
+Stacktrace:
+ [1] top-level scope at In[10]:1</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Now-in-1.0:-NamedTuples">Now in 1.0: NamedTuples<a class="anchor-link" href="#Now-in-1.0:-NamedTuples"> </a></h2><p>As you might guess, <code>NamedTuple</code>s are just like <code>Tuple</code>s except that each element additionally has a name! They have a special syntax using <code>=</code> inside a tuple:</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="n">name1</span> <span class="o">=</span> <span class="n">item1</span><span class="p">,</span> <span class="n">name2</span> <span class="o">=</span> <span class="n">item2</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myfavoriteanimals</span> <span class="o">=</span> <span class="p">(</span><span class="n">bird</span> <span class="o">=</span> <span class="s2">&quot;penguins&quot;</span><span class="p">,</span> <span class="n">mammal</span> <span class="o">=</span> <span class="s2">&quot;cats&quot;</span><span class="p">,</span> <span class="n">marsupial</span> <span class="o">=</span> <span class="s2">&quot;sugargliders&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Like regular <code>Tuples</code>, <code>NamedTuples</code> are ordered, so we can retrieve their elements via indexing:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myfavoriteanimals</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>They also add the special ability to access values by their name:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myfavoriteanimals</span><span class="o">.</span><span class="n">bird</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Dictionaries">Dictionaries<a class="anchor-link" href="#Dictionaries"> </a></h2><p>If we have sets of data related to one another, we may choose to store that data in a dictionary. We can create a dictionary using the <code>Dict()</code> function, which we can initialize as an empty dictionary or one storing key, value pairs.</p>
+<p>Syntax:</p>
+<div class="highlight"><pre><span></span><span class="kt">Dict</span><span class="p">(</span><span class="n">key1</span> <span class="o">=&gt;</span> <span class="n">value1</span><span class="p">,</span> <span class="n">key2</span> <span class="o">=&gt;</span> <span class="n">value2</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+<p>A good example is a contacts list, where we associate names with phone numbers.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myphonebook</span> <span class="o">=</span> <span class="n">Dict</span><span class="p">(</span><span class="s2">&quot;Jenny&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;867-5309&quot;</span><span class="p">,</span> <span class="s2">&quot;Ghostbusters&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;555-2368&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Dict{String,String} with 2 entries:
+  &#34;Jenny&#34;        =&gt; &#34;867-5309&#34;
+  &#34;Ghostbusters&#34; =&gt; &#34;555-2368&#34;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this example, each name and number is a "key" and "value" pair. We can grab Jenny's number (a value) using the associated key</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myphonebook</span><span class="p">[</span><span class="s2">&quot;Jenny&quot;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#34;867-5309&#34;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can add another entry to this dictionary as follows</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myphonebook</span><span class="p">[</span><span class="s2">&quot;Kramer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;555-FILK&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#34;555-FILK&#34;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's check what our phonebook looks like now...</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myphonebook</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Dict{String,String} with 3 entries:
+  &#34;Jenny&#34;        =&gt; &#34;867-5309&#34;
+  &#34;Kramer&#34;       =&gt; &#34;555-FILK&#34;
+  &#34;Ghostbusters&#34; =&gt; &#34;555-2368&#34;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can delete Kramer from our contact list - and simultaneously grab his number - by using <code>pop!</code></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pop</span><span class="o">!(</span>myphonebook, <span class="s2">&quot;Kramer&quot;</span><span class="o">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#34;555-FILK&#34;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myphonebook</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Dict{String,String} with 2 entries:
+  &#34;Jenny&#34;        =&gt; &#34;867-5309&#34;
+  &#34;Ghostbusters&#34; =&gt; &#34;555-2368&#34;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Unlike tuples and arrays, dictionaries are not ordered. So, we can't index into them.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myphonebook</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+KeyError: key 1 not found
+
+Stacktrace:
+ [1] getindex(::Dict{String,String}, ::Int64) at .\dict.jl:477
+ [2] top-level scope at In[7]:1</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the example above, <code>julia</code> thinks you're trying to access a value associated with the key <code>1</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Arrays">Arrays<a class="anchor-link" href="#Arrays"> </a></h2><p>Unlike tuples, arrays are mutable. Unlike dictionaries, arrays contain ordered collections. <br />
+We can create an array by enclosing this collection in <code>[ ]</code>.</p>
+<p>Syntax: <br /></p>
+<div class="highlight"><pre><span></span><span class="p">[</span><span class="n">item1</span><span class="p">,</span> <span class="n">item2</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+</pre></div>
+<p>For example, we might create an array to keep track of my friends</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myfriends</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Ted&quot;</span><span class="p">,</span> <span class="s2">&quot;Robyn&quot;</span><span class="p">,</span> <span class="s2">&quot;Barney&quot;</span><span class="p">,</span> <span class="s2">&quot;Lily&quot;</span><span class="p">,</span> <span class="s2">&quot;Marshall&quot;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5-element Array{String,1}:
+ &#34;Ted&#34;
+ &#34;Robyn&#34;
+ &#34;Barney&#34;
+ &#34;Lily&#34;
+ &#34;Marshall&#34;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>1</code> in <code>Array{String,1}</code> means this is a one dimensional vector.  An <code>Array{String,2}</code> would be a 2d matrix, etc.  The <code>String</code> is the type of each element.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>or to store a sequence of numbers</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fibonacci</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7-element Array{Int64,1}:
+  1
+  1
+  2
+  3
+  5
+  8
+ 13</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mixture</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Ted&quot;</span><span class="p">,</span> <span class="s2">&quot;Robyn&quot;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>6-element Array{Any,1}:
+ 1
+ 1
+ 2
+ 3
+  &#34;Ted&#34;
+  &#34;Robyn&#34;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Once we have an array, we can grab individual pieces of data from inside that array by indexing into the array. For example, if we want the third friend listed in <code>myfriends</code>, we write</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myfriends</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#34;Barney&#34;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can use indexing to edit an existing element of an array</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myfriends</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Baby Bop&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#34;Baby Bop&#34;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Yes, Julia is 1-based indexing, not 0-based like Python.  Wars are faught over lesser issues. I have a friend with the wisdom of Solomon who proposes settling this once and for all with ½ 😃</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can also edit the array by using the <code>push!</code> and <code>pop!</code> functions. <code>push!</code> adds an element to the end of an array and <code>pop!</code> removes the last element of an array.</p>
+<p>We can add another number to our fibonnaci sequence</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">push</span><span class="o">!(</span>fibonacci, <span class="m">21</span><span class="o">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>8-element Array{Int64,1}:
+  1
+  1
+  2
+  3
+  5
+  8
+ 13
+ 21</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and then remove it</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pop</span><span class="o">!(</span>fibonacci<span class="o">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>21</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fibonacci</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7-element Array{Int64,1}:
+  1
+  1
+  2
+  3
+  5
+  8
+ 13</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So far I've given examples of only 1D arrays of scalars, but arrays can have an arbitrary number of dimensions and can also store other arrays.
+<br /><br />
+For example, the following are arrays of arrays:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">favorites</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;koobideh&quot;</span><span class="p">,</span> <span class="s2">&quot;chocolate&quot;</span><span class="p">,</span> <span class="s2">&quot;eggs&quot;</span><span class="p">],[</span><span class="s2">&quot;penguins&quot;</span><span class="p">,</span> <span class="s2">&quot;cats&quot;</span><span class="p">,</span> <span class="s2">&quot;sugargliders&quot;</span><span class="p">]]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2-element Array{Array{String,1},1}:
+ [&#34;koobideh&#34;, &#34;chocolate&#34;, &#34;eggs&#34;]
+ [&#34;penguins&#34;, &#34;cats&#34;, &#34;sugargliders&#34;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3-element Array{Array{Int64,1},1}:
+ [1, 2, 3]
+ [4, 5]
+ [6, 7, 8, 9]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Below are examples of 2D and 3D arrays populated with random values.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>4×3 Array{Float64,2}:
+ 0.689148   0.617617   0.991503
+ 0.867637   0.912078   0.430103
+ 0.156068   0.0802696  0.732754
+ 0.0923371  0.784014   0.688924</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>4×3×2 Array{Float64,3}:
+[:, :, 1] =
+ 0.922505   0.22645    0.651297
+ 0.488282   0.345696   0.519312
+ 0.903972   0.131362   0.346508
+ 0.0689912  0.0758148  0.391353
+
+[:, :, 2] =
+ 0.392975  0.14973   0.417999
+ 0.43238   0.438699  0.501153
+ 0.795702  0.998135  0.876675
+ 0.791324  0.624019  0.0290969</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Be careful when you want to copy arrays!</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fibonacci</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7-element Array{Int64,1}:
+  1
+  1
+  2
+  3
+  5
+  8
+ 13</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">somenumbers</span> <span class="o">=</span> <span class="n">fibonacci</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7-element Array{Int64,1}:
+  1
+  1
+  2
+  3
+  5
+  8
+ 13</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">somenumbers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">404</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>404</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fibonacci</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7-element Array{Int64,1}:
+ 404
+   1
+   2
+   3
+   5
+   8
+  13</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Editing <code>somenumbers</code> caused <code>fibonacci</code> to get updated as well!</p>
+<p>In the above example, we didn't actually make a copy of <code>fibonacci</code>. We just created a new way to access the entries in the array bound to <code>fibonacci</code>.</p>
+<p>If we'd like to make a copy of the array bound to <code>fibonacci</code>, we can use the <code>copy</code> function.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># First, restore fibonacci</span>
+<span class="n">fibonacci</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">fibonacci</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7-element Array{Int64,1}:
+  1
+  1
+  2
+  3
+  5
+  8
+ 13</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">somenumbers</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7-element Array{Int64,1}:
+  1
+  1
+  2
+  3
+  5
+  8
+ 13</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">somemorenumbers</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7-element Array{Int64,1}:
+  1
+  1
+  2
+  3
+  5
+  8
+ 13</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">somemorenumbers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">404</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>404</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fibonacci</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7-element Array{Int64,1}:
+  1
+  1
+  2
+  3
+  5
+  8
+ 13</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this last example, fibonacci was not updated. Therefore we see that the arrays bound to <code>somemorenumbers</code> and <code>fibonacci</code> are distinct.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Exercises">Exercises<a class="anchor-link" href="#Exercises"> </a></h3><h4 id="3.1">3.1<a class="anchor-link" href="#3.1"> </a></h4><p>Create an array, <code>a_ray</code>, with the following code:</p>
+<div class="highlight"><pre><span></span><span class="n">a_ray</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+<p>Add the number <code>4</code> to the end of this array and then remove it.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a_ray</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="n">push</span><span class="o">!(</span>a_ray,4<span class="o">)</span>
+
+<span class="n">pop</span><span class="o">!(</span>a_ray<span class="o">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>4</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@assert</span> <span class="n">a_ray</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.2">3.2<a class="anchor-link" href="#3.2"> </a></h4><p>Try to add "Emergency" as key to <code>myphonebook</code> with the value <code>string(911)</code> with the following code</p>
+<div class="highlight"><pre><span></span><span class="n">myphonebook</span><span class="p">[</span><span class="s">&quot;Emergency&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+</pre></div>
+<p>Why doesn't this work?</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myphonebook</span><span class="p">[</span><span class="s2">&quot;Emergency&quot;</span><span class="p">]</span><span class="o">=</span><span class="mi">100</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+UndefVarError: myphonebook not defined
+
+Stacktrace:
+ [1] top-level scope at In[2]:1</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.3">3.3<a class="anchor-link" href="#3.3"> </a></h4><p>Create a new dictionary called <code>flexible_phonebook</code> that has Jenny's number stored as an integer and Ghostbusters' number stored as a string with the following code</p>
+<div class="highlight"><pre><span></span><span class="n">flexible_phonebook</span> <span class="o">=</span> <span class="kt">Dict</span><span class="p">(</span><span class="s">&quot;Jenny&quot;</span> <span class="o">=&gt;</span> <span class="mi">8675309</span><span class="p">,</span> <span class="s">&quot;Ghostbusters&quot;</span> <span class="o">=&gt;</span> <span class="s">&quot;555-2368&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">flexible_phonebook</span> <span class="o">=</span> <span class="n">Dict</span><span class="p">(</span><span class="s2">&quot;Jenny&quot;</span> <span class="o">=&gt;</span> <span class="mi">8675309</span><span class="p">,</span> <span class="s2">&quot;Ghostbusters&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;555-2368&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Dict{String,Any} with 2 entries:
+  &#34;Jenny&#34;        =&gt; 8675309
+  &#34;Ghostbusters&#34; =&gt; &#34;555-2368&#34;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@assert</span> <span class="n">flexible_phonebook</span> <span class="o">==</span> <span class="n">Dict</span><span class="p">(</span><span class="s2">&quot;Jenny&quot;</span> <span class="o">=&gt;</span> <span class="mi">8675309</span><span class="p">,</span> <span class="s2">&quot;Ghostbusters&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;555-2368&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.4">3.4<a class="anchor-link" href="#3.4"> </a></h4><p>Add the key "Emergency" with the value <code>911</code> (an integer) to <code>flexible_phonebook</code>.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">flexible_phonebook</span><span class="p">[</span><span class="s2">&quot;Emergency&quot;</span><span class="p">]</span><span class="o">=</span><span class="mi">911</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>911</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@assert</span> <span class="n">haskey</span><span class="p">(</span><span class="n">flexible_phonebook</span><span class="p">,</span> <span class="s2">&quot;Emergency&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@assert</span> <span class="n">flexible_phonebook</span><span class="p">[</span><span class="s2">&quot;Emergency&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">911</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.5">3.5<a class="anchor-link" href="#3.5"> </a></h4><p>Why can we add an integer as a value to <code>flexible_phonebook</code> but not <code>myphonebook</code>? How could we have initialized <code>myphonebook</code> so that it would accept integers as values?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><a class="u-url" href="/aigym-workout/2020/07/14/Data-structures.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/aigym-workout/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/aigym-workout/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/aigym-workout/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/aigym-workout/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/aigym-workout/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
