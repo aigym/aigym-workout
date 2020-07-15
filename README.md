@@ -6,14 +6,13 @@
 
 https://aigym.github.io/aigym-workout/
 
-# AI Gym Blog
+# My Blog
 
 
-This is meant for distribution of content for AI Gym members. 
 _powered by [fastpages](https://github.com/fastai/fastpages)_
 
 
-## How to use the blogging platform for AI Gym - Same content as fastpages provides
+## What To Do Next?
 
 Great!  You have setup your repo.  Now its time to start writing content.  Some helpful links:
 
