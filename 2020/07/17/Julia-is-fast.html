@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Julia is fast | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Julia is fast" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<link rel="canonical" href="https://aigym.github.io/aigym-workout/2020/07/17/Julia-is-fast.html" />
+<meta property="og:url" content="https://aigym.github.io/aigym-workout/2020/07/17/Julia-is-fast.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-17T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"An easy to use blogging platform with support for Jupyter Notebooks.","@type":"BlogPosting","headline":"Julia is fast","dateModified":"2020-07-17T00:00:00-05:00","datePublished":"2020-07-17T00:00:00-05:00","url":"https://aigym.github.io/aigym-workout/2020/07/17/Julia-is-fast.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://aigym.github.io/aigym-workout/2020/07/17/Julia-is-fast.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/aigym-workout/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://aigym.github.io/aigym-workout/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/aigym-workout/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Julia is fast | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Julia is fast" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<link rel="canonical" href="https://aigym.github.io/aigym-workout/2020/07/17/Julia-is-fast.html" />
+<meta property="og:url" content="https://aigym.github.io/aigym-workout/2020/07/17/Julia-is-fast.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-17T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"An easy to use blogging platform with support for Jupyter Notebooks.","@type":"BlogPosting","headline":"Julia is fast","dateModified":"2020-07-17T00:00:00-05:00","datePublished":"2020-07-17T00:00:00-05:00","url":"https://aigym.github.io/aigym-workout/2020/07/17/Julia-is-fast.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://aigym.github.io/aigym-workout/2020/07/17/Julia-is-fast.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://aigym.github.io/aigym-workout/feed.xml" title="fastpages" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/aigym-workout/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/aigym-workout/about/">About Me</a><a class="page-link" href="/aigym-workout/search/">Search</a><a class="page-link" href="/aigym-workout/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Julia is fast</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-07-17T00:00:00-05:00" itemprop="datePublished">
+        Jul 17, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/aigym/aigym-workout/tree/master/_notebooks/2020-07-17-Julia-is-fast.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/aigym-workout/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/aigym/aigym-workout/master?filepath=_notebooks%2F2020-07-17-Julia-is-fast.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/aigym-workout/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/aigym/aigym-workout/blob/master/_notebooks/2020-07-17-Julia-is-fast.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/aigym-workout/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-07-17-Julia-is-fast.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Outline-of-this-notebook">Outline of this notebook<a class="anchor-link" href="#Outline-of-this-notebook"> </a></h1><ul>
+<li>Define the sum function</li>
+<li>Implementations &amp; benchmarking of sum in...<ul>
+<li>C (hand-written)</li>
+<li>C (hand-written with -ffast-math)</li>
+<li>python (built-in)</li>
+<li>python (numpy)</li>
+<li>python (hand-written)</li>
+<li>Julia (built-in)</li>
+<li>Julia (hand-written)</li>
+<li>Julia (hand-written with SIMD)</li>
+</ul>
+</li>
+<li>Summary of benchmarks</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="sum:-An-easy-enough-function-to-understand"><code>sum</code>: An easy enough function to understand<a class="anchor-link" href="#sum:-An-easy-enough-function-to-understand"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Consider the  <strong>sum</strong> function <code>sum(a)</code>, which computes
+$$
+\mathrm{sum}(a) = \sum_{i=1}^n a_i,
+$$
+where $n$ is the length of <code>a</code>.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="o">^</span><span class="mi">7</span><span class="p">)</span> <span class="c1"># 1D vector of random numbers, uniform on [0,1)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>10000000-element Array{Float64,1}:
+ 0.10251712333064189
+ 0.15664657397668247
+ 0.8702319998528238
+ 0.9539539926524228
+ 0.9737370247684902
+ 0.6975773467174782
+ 0.5100099944150349
+ 0.19423165967370792
+ 0.9345001468761105
+ 0.6978391397534582
+ 0.5594818798599315
+ 0.38142256250643647
+ 0.6647733162702012
+ ⋮
+ 0.5069800190998628
+ 0.585248252119136
+ 0.3099867704287782
+ 0.11900182482525756
+ 0.05143227260128613
+ 0.1598031892874665
+ 0.7810893612852063
+ 0.8330185483543266
+ 0.9481261222197384
+ 0.6235224455863548
+ 0.8671254289396593
+ 0.17421351026220133</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>4.999307285764241e6</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The expected result is 0.5 * 10^7, since the mean of each entry is 0.5</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Benchmarking-a-few-ways-in-a-few-languages">Benchmarking a few ways in a few languages<a class="anchor-link" href="#Benchmarking-a-few-ways-in-a-few-languages"> </a></h1>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@time</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  0.013606 seconds (1 allocation: 16 bytes)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>4.999307285764241e6</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@time</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  0.012826 seconds (1 allocation: 16 bytes)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>4.999307285764241e6</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@time</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  0.007343 seconds (1 allocation: 16 bytes)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>4.999307285764241e6</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>@time</code> macro can yield noisy results, so it's not our best choice for benchmarking!</p>
+<p>Luckily, Julia has a <code>BenchmarkTools.jl</code> package to make benchmarking easy and accurate:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">using</span> <span class="n">Pkg</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;BenchmarkTools&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre><span class="ansi-green-intense-fg ansi-bold">   Updating</span> registry at `C:\Users\Home\.julia\registries\General`
+<span class="ansi-green-intense-fg ansi-bold">   Updating</span> git-repo `https://github.com/JuliaRegistries/General.git`
+<span class="ansi-green-intense-fg ansi-bold">  Resolving</span> package versions...
+<span class="ansi-green-intense-fg ansi-bold">  Installed</span> OpenSSL_jll ──── v1.1.1+4
+<span class="ansi-green-intense-fg ansi-bold">  Installed</span> Zlib_jll ─────── v1.2.11+14
+<span class="ansi-green-intense-fg ansi-bold">  Installed</span> BenchmarkTools ─ v0.5.0
+<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `C:\Users\Home\.julia\environments\v1.4\Project.toml`
+ <span class="ansi-black-intense-fg"> [6e4b80f9]</span><span class="ansi-green-intense-fg"> + BenchmarkTools v0.5.0</span>
+<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `C:\Users\Home\.julia\environments\v1.4\Manifest.toml`
+ <span class="ansi-black-intense-fg"> [6e4b80f9]</span><span class="ansi-green-intense-fg"> + BenchmarkTools v0.5.0</span>
+ <span class="ansi-black-intense-fg"> [458c3c95]</span><span class="ansi-yellow-intense-fg"> ↑ OpenSSL_jll v1.1.1+3 ⇒ v1.1.1+4</span>
+ <span class="ansi-black-intense-fg"> [83775a58]</span><span class="ansi-yellow-intense-fg"> ↑ Zlib_jll v1.2.11+12 ⇒ v1.2.11+14</span>
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre></pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">using</span> <span class="n">BenchmarkTools</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="1.-The-C-language">1. The C language<a class="anchor-link" href="#1.-The-C-language"> </a></h1><p>C is often considered the gold standard: difficult on the human, nice for the machine. Getting within a factor of 2 of C is often satisfying. Nonetheless, even within C, there are many kinds of optimizations possible that a naive C writer may or may not get the advantage of.</p>
+<p>The current author does not speak C, so he does not read the cell below, but is happy to know that you can put C code in a Julia session, compile it, and run it. Note that the <code>"""</code> wrap a multi-line string.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">using</span> <span class="n">Libdl</span>
+<span class="n">C_code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#include &lt;stddef.h&gt;</span>
+<span class="s2">double c_sum(size_t n, double *X) {</span>
+<span class="s2">    double s = 0.0;</span>
+<span class="s2">    for (size_t i = 0; i &lt; n; ++i) {</span>
+<span class="s2">        s += X[i];</span>
+<span class="s2">    }</span>
+<span class="s2">    return s;</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">const</span> <span class="n">Clib</span> <span class="o">=</span> <span class="n">tempname</span><span class="p">()</span>   <span class="c1"># make a temporary file</span>
+
+
+<span class="c1"># compile to a shared library by piping C_code to gcc</span>
+<span class="c1"># (works only if you have gcc installed):</span>
+
+<span class="nb">open</span><span class="p">(</span><span class="err">`</span><span class="n">gcc</span> <span class="o">-</span><span class="n">fPIC</span> <span class="o">-</span><span class="n">O3</span> <span class="o">-</span><span class="n">msse3</span> <span class="o">-</span><span class="n">xc</span> <span class="o">-</span><span class="n">shared</span> <span class="o">-</span><span class="n">o</span> <span class="err">$</span><span class="p">(</span><span class="n">Clib</span> <span class="o">*</span> <span class="s2">&quot;.&quot;</span> <span class="o">*</span> <span class="n">Libdl</span><span class="o">.</span><span class="n">dlext</span><span class="p">)</span> <span class="o">-</span><span class="err">`</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="n">do</span> <span class="n">f</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">C_code</span><span class="p">)</span>
+<span class="n">end</span>
+
+<span class="c1"># define a Julia function that calls the C function:</span>
+<span class="n">c_sum</span><span class="p">(</span><span class="n">X</span><span class="p">::</span><span class="n">Array</span><span class="p">{</span><span class="n">Float64</span><span class="p">})</span> <span class="o">=</span> <span class="n">ccall</span><span class="p">((</span><span class="s2">&quot;c_sum&quot;</span><span class="p">,</span> <span class="n">Clib</span><span class="p">),</span> <span class="n">Float64</span><span class="p">,</span> <span class="p">(</span><span class="n">Csize_t</span><span class="p">,</span> <span class="n">Ptr</span><span class="p">{</span><span class="n">Float64</span><span class="p">}),</span> <span class="n">length</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">X</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="err">≈</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># type \approx and then &lt;TAB&gt; to get the ≈ symbolb</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="err">≈</span>  <span class="c1"># alias for the `isapprox` function</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">?</span>isapprox
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can now benchmark the C code directly from Julia:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_bench</span> <span class="o">=</span> <span class="nd">@benchmark</span> <span class="n">c_sum</span><span class="p">(</span><span class="err">$</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;C: Fastest time was $(minimum(c_bench.times) / 1e6) msec&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">Dict</span><span class="p">()</span>  <span class="c1"># a &quot;dictionary&quot;, i.e. an associative array</span>
+<span class="n">d</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">minimum</span><span class="p">(</span><span class="n">c_bench</span><span class="o">.</span><span class="n">times</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e6</span>  <span class="c1"># in milliseconds</span>
+<span class="n">d</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">using</span> <span class="n">Plots</span>
+<span class="n">gr</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">using</span> <span class="n">Statistics</span> <span class="c1"># bring in statistical support for standard deviations</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">c_bench</span><span class="o">.</span><span class="n">times</span> <span class="o">/</span> <span class="mf">1e6</span> <span class="c1"># times in milliseconds</span>
+<span class="n">m</span><span class="p">,</span> <span class="n">σ</span> <span class="o">=</span> <span class="n">minimum</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">std</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">histogram</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="n">σ</span><span class="p">),</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;milliseconds&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="c1"># # 2. C with -ffast-math</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># If we allow C to re-arrange the floating point operations, then it&#39;ll vectorize with SIMD (single instruction, multiple data) instructions.</span>
+<span class="n">const</span> <span class="n">Clib_fastmath</span> <span class="o">=</span> <span class="n">tempname</span><span class="p">()</span>   <span class="c1"># make a temporary file</span>
+
+<span class="c1"># The same as above but with a -ffast-math flag added</span>
+<span class="nb">open</span><span class="p">(</span><span class="err">`</span><span class="n">gcc</span> <span class="o">-</span><span class="n">fPIC</span> <span class="o">-</span><span class="n">O3</span> <span class="o">-</span><span class="n">msse3</span> <span class="o">-</span><span class="n">xc</span> <span class="o">-</span><span class="n">shared</span> <span class="o">-</span><span class="n">ffast</span><span class="o">-</span><span class="n">math</span> <span class="o">-</span><span class="n">o</span> <span class="err">$</span><span class="p">(</span><span class="n">Clib_fastmath</span> <span class="o">*</span> <span class="s2">&quot;.&quot;</span> <span class="o">*</span> <span class="n">Libdl</span><span class="o">.</span><span class="n">dlext</span><span class="p">)</span> <span class="o">-</span><span class="err">`</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="n">do</span> <span class="n">f</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">C_code</span><span class="p">)</span>
+<span class="n">end</span>
+
+<span class="c1"># define a Julia function that calls the C function:</span>
+<span class="n">c_sum_fastmath</span><span class="p">(</span><span class="n">X</span><span class="p">::</span><span class="n">Array</span><span class="p">{</span><span class="n">Float64</span><span class="p">})</span> <span class="o">=</span> <span class="n">ccall</span><span class="p">((</span><span class="s2">&quot;c_sum&quot;</span><span class="p">,</span> <span class="n">Clib_fastmath</span><span class="p">),</span> <span class="n">Float64</span><span class="p">,</span> <span class="p">(</span><span class="n">Csize_t</span><span class="p">,</span> <span class="n">Ptr</span><span class="p">{</span><span class="n">Float64</span><span class="p">}),</span> <span class="n">length</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">X</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_fastmath_bench</span> <span class="o">=</span> <span class="nd">@benchmark</span> <span class="err">$</span><span class="n">c_sum_fastmath</span><span class="p">(</span><span class="err">$</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;C -ffast-math&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">minimum</span><span class="p">(</span><span class="n">c_fastmath_bench</span><span class="o">.</span><span class="n">times</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e6</span>  <span class="c1"># in milliseconds</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="3.-Python's-built-in-sum">3. Python's built in <code>sum</code><a class="anchor-link" href="#3.-Python's-built-in-sum"> </a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>PyCall</code> package provides a Julia interface to Python:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># using Pkg; Pkg.add(&quot;PyCall&quot;)</span>
+<span class="n">using</span> <span class="n">PyCall</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get the Python built-in &quot;sum&quot; function:</span>
+<span class="n">pysum</span> <span class="o">=</span> <span class="n">pybuiltin</span><span class="p">(</span><span class="s2">&quot;sum&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pysum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pysum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="err">≈</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">py_list_bench</span> <span class="o">=</span> <span class="nd">@benchmark</span> <span class="err">$</span><span class="n">pysum</span><span class="p">(</span><span class="err">$</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;Python built-in&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">minimum</span><span class="p">(</span><span class="n">py_list_bench</span><span class="o">.</span><span class="n">times</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e6</span>
+<span class="n">d</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="4.-Python:-numpy">4. Python: <code>numpy</code><a class="anchor-link" href="#4.-Python:-numpy"> </a></h1><h2 id="Takes-advantage-of-hardware-&quot;SIMD&quot;,-but-only-works-when-it-works.">Takes advantage of hardware "SIMD", but only works when it works.<a class="anchor-link" href="#Takes-advantage-of-hardware-&quot;SIMD&quot;,-but-only-works-when-it-works."> </a></h2><p><code>numpy</code> is an optimized C library, callable from Python.
+It may be installed within Julia as follows:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># using Pkg; Pkg.add(&quot;Conda&quot;)</span>
+<span class="n">using</span> <span class="n">Conda</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Conda.add(&quot;numpy&quot;)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">numpy_sum</span> <span class="o">=</span> <span class="n">pyimport</span><span class="p">(</span><span class="s2">&quot;numpy&quot;</span><span class="p">)[</span><span class="s2">&quot;sum&quot;</span><span class="p">]</span>
+
+<span class="n">py_numpy_bench</span> <span class="o">=</span> <span class="nd">@benchmark</span> <span class="err">$</span><span class="n">numpy_sum</span><span class="p">(</span><span class="err">$</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">numpy_sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">numpy_sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="err">≈</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;Python numpy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">minimum</span><span class="p">(</span><span class="n">py_numpy_bench</span><span class="o">.</span><span class="n">times</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e6</span>
+<span class="n">d</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="5.-Python,-hand-written">5. Python, hand-written<a class="anchor-link" href="#5.-Python,-hand-written"> </a></h1>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">py</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">def py_sum(A):</span>
+<span class="s2">    s = 0.0</span>
+<span class="s2">    for a in A:</span>
+<span class="s2">        s += a</span>
+<span class="s2">    return s</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">sum_py</span> <span class="o">=</span> <span class="n">py</span><span class="s2">&quot;py_sum&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">py_hand</span> <span class="o">=</span> <span class="nd">@benchmark</span> <span class="err">$</span><span class="n">sum_py</span><span class="p">(</span><span class="err">$</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sum_py</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sum_py</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="err">≈</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;Python hand-written&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">minimum</span><span class="p">(</span><span class="n">py_hand</span><span class="o">.</span><span class="n">times</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e6</span>
+<span class="n">d</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="6.-Julia-(built-in)">6. Julia (built-in)<a class="anchor-link" href="#6.-Julia-(built-in)"> </a></h1><h2 id="Written-directly-in-Julia,-not-in-C!">Written directly in Julia, not in C!<a class="anchor-link" href="#Written-directly-in-Julia,-not-in-C!"> </a></h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@which</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">j_bench</span> <span class="o">=</span> <span class="nd">@benchmark</span> <span class="nb">sum</span><span class="p">(</span><span class="err">$</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;Julia built-in&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">minimum</span><span class="p">(</span><span class="n">j_bench</span><span class="o">.</span><span class="n">times</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e6</span>
+<span class="n">d</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="7.-Julia-(hand-written)">7. Julia (hand-written)<a class="anchor-link" href="#7.-Julia-(hand-written)"> </a></h1>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">function</span> <span class="n">mysum</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># s = zero(eltype(a))</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">A</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">a</span>
+    <span class="n">end</span>
+    <span class="n">s</span>
+<span class="n">end</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">j_bench_hand</span> <span class="o">=</span> <span class="nd">@benchmark</span> <span class="n">mysum</span><span class="p">(</span><span class="err">$</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;Julia hand-written&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">minimum</span><span class="p">(</span><span class="n">j_bench_hand</span><span class="o">.</span><span class="n">times</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e6</span>
+<span class="n">d</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="8.-Julia-(hand-written-w.-simd)">8. Julia (hand-written w. simd)<a class="anchor-link" href="#8.-Julia-(hand-written-w.-simd)"> </a></h1>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">function</span> <span class="n">mysum_simd</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># s = zero(eltype(A))</span>
+    <span class="nd">@simd</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">A</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">a</span>
+    <span class="n">end</span>
+    <span class="n">s</span>
+<span class="n">end</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">j_bench_hand_simd</span> <span class="o">=</span> <span class="nd">@benchmark</span> <span class="n">mysum_simd</span><span class="p">(</span><span class="err">$</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mysum_simd</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;Julia hand-written simd&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">minimum</span><span class="p">(</span><span class="n">j_bench_hand_simd</span><span class="o">.</span><span class="n">times</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e6</span>
+<span class="n">d</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Summary">Summary<a class="anchor-link" href="#Summary"> </a></h1>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">sort</span><span class="p">(</span><span class="n">collect</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">by</span><span class="o">=</span><span class="n">last</span><span class="p">)</span>
+    <span class="n">println</span><span class="p">(</span><span class="n">rpad</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">),</span> <span class="n">lpad</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">value</span><span class="p">;</span> <span class="n">digits</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">))</span>
+<span class="n">end</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><a class="u-url" href="/aigym-workout/2020/07/17/Julia-is-fast.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/aigym-workout/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/aigym-workout/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/aigym-workout/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/aigym-workout/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/aigym-workout/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
